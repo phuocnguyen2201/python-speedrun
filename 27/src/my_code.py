@@ -32,5 +32,5 @@ if __name__ == "__main__":
     total_value = 0
     for stock in stocks:
         stock.print_value(roi, years)
-        total_value += stock.price * stock.quantity
+        total_value += stock.total_value
     print(f"Portfolio value will be {total_value:.2f}")
