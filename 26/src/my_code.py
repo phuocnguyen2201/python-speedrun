@@ -57,8 +57,9 @@ class Observation:
 if __name__ == "__main__":
     #Write main program below this line
     Observation1 = Observation("crow", 32, "31.01.2020", "Savilahti", "Wind, north 5m/s")
-    Observation1.get_species()
-    Observation1.get_position()
-    Observation1.get_number_of_birds()
-    Observation1.get_observation_time()
-    Observation1.get_additional_info()
+    print(Observation1)
+    for i in range(11):
+        Observation1.set_additional_info(Observation1.get_additional_info())
+        Observation1.set_observation_time(Observation1.get_observation_time())
+        Observation1.set_species(Observation1.get_species())
+        Observation1.set_number_of_birds(Observation1.get_number_of_birds())
