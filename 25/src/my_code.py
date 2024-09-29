@@ -3,7 +3,50 @@
 import datetime
 
 #Insert your classes here
+class CarModel:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
 
+    def __str__(self):
+        return f"Brand: {self.brand} Model: {self.model}"
+    
+class Service:
+    def __init__(self, date, operation, price):
+        self.date = date
+        self.operation = operation
+        self.price = price
+
+    def __str__(self):
+        return f"\tDate: {self.date.strftime('%d.%m.%Y')} Operation: {self.operation} Price: {self.price}"
+    
+class Car:
+    def __init__(self, name, model, bought, price, boughtplace):
+        self.name = name
+        self.model = model
+        self.bought = bought
+        self.price = price
+        self.boughtplace = boughtplace
+        self.services = []
+
+    def addService(self, service):
+        self.services.append(service)
+
+    def __str__(self):
+        service_history = "\n".join([str(service) for service in self.services])
+        return f"Name:  {self.name}\n{self.model}\nBought: {self.bought.strftime('%d.%m.%Y')}\nService history: \n{service_history}\nBought place:  {self.boughtplace}\n"
+    
+class CarStorage:
+    def __init__(self):
+        self.cars = []
+
+    def addCar(self, car):
+        self.cars.append(car)
+
+    def print(self):
+        print("The list of my sweet cars:\n")
+        for car in self.cars:
+            print(car)
 if __name__ == '__main__':
     #Main program, dont modify!
     myCarStorage = CarStorage()

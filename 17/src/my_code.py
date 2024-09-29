@@ -14,51 +14,51 @@ def input_int(msg):
 
 #Write your functions here!
 def ask_grades():
-  
+    
     name = input("Name : ")
     grade = input_int("Grade : ")
-    students = {}
-    
+    grades = {}
+
     while True:
         if grade < 0:
             grade = 0
         if grade > 5:
             grade = 5
-        students[name] = grade
+        grades[name] = grade
         name = input("Name : ")
-        if(name == "END" or name == "Bad input"):
-            return students
+        if name == "END":
+            break
         grade = input_int("Grade : ")
-    return students
-  
+
+    return grades
+
 def print_failed(grades):
-  
-    failed = []
-    
-    for name, grade in grades.items():
-        if grade == 0:
-            failed.append(name)
-    print("There are", len(failed), "failed students.")
-    for name in failed:
-        print(name, 0)
-        
+
+    count_failed = failed_count(grades)
+    if count_failed > 0:
+        print(f"There are {count_failed} failed students.")
+        for name, grade in grades.items():
+            if grade == 0:
+                print(name, grade)
+                
+    else:
+      print_grades(grades)
+
 def failed_count(grades):
-    failed = 0
+    failed_students = []
+
     for name, grade in grades.items():
         if grade == 0:
-            failed += 1
-    return failed
-  
+            failed_students.append(name)
+    return len(failed_students)
+
 def print_grades(grades):
+
     for name, grade in grades.items():
         print(name, grade)
         
 if __name__ == "__main__":
     #Write main program below this line
     grades = ask_grades()
-    failed = failed_count(grades)
-    if failed > 0:
-        print_failed(grades)
-    else:
-        print_grades(grades)
+    print_failed(grades)
         
